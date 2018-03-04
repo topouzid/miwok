@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -46,17 +49,29 @@ public class NumbersActivity extends AppCompatActivity {
         /**
          * Words are stored in an arrayList
          */
-        ArrayList<String> words = new ArrayList<String>();
-        words.add("One");
-        words.add("Two");
-        words.add("Three");
-        words.add("Four");
-        words.add("Five");
-        words.add("Six");
-        words.add("Seven");
-        words.add("Eight");
-        words.add("Nine");
-        words.add("Ten");
+//        ArrayList<String> words = new ArrayList<String>();
+//        words.add("One");
+//        words.add("Two");
+//        words.add("Three");
+//        words.add("Four");
+//        words.add("Five");
+//        words.add("Six");
+//        words.add("Seven");
+//        words.add("Eight");
+//        words.add("Nine");
+//        words.add("Ten");
+
+        ArrayList<Word> words = new ArrayList<Word>();
+        words.add(new Word("One", "lutti"));
+        words.add(new Word("Two", "otiiko"));
+        words.add(new Word("Three", "tolookosu"));
+        words.add(new Word("Four", "oyyisa"));
+        words.add(new Word("Five", "massokka"));
+        words.add(new Word("Six", "temmokka"));
+        words.add(new Word("Seven", "kenekaku"));
+        words.add(new Word("Eight", "kawinta"));
+        words.add(new Word("Nine", "wo'e"));
+        words.add(new Word("Ten", "na'aacha"));
 //        Log.v("NumbersActivity", "ArrayList Index 0 " + words.get(0));
 //        Log.v("NumbersActivity", "ArrayList Index 1 " + words.get(1));
 //        Log.v("NumbersActivity", "ArrayList Index 2 " + words.get(2));
@@ -72,7 +87,7 @@ public class NumbersActivity extends AppCompatActivity {
          * Create the main view
          * @variable rootView
          */
-        LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
+//        LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
 
         /**
          * Manually create textViews one by one,
@@ -90,16 +105,15 @@ public class NumbersActivity extends AppCompatActivity {
          * Create the an arrayList of textviews using while loop,
          * add each textview to the main view.
          */
-//        int arraySize = words.size();
-        int index = 0;
-        ArrayList<TextView> wordViewList = new ArrayList<TextView>();
-        while (index < words.size()) {
-            wordViewList.add(new TextView(this));
-            wordViewList.get(index).setText(words.get(index));
-            rootView.addView(wordViewList.get(index));
-            Log.v("NumbersActivity", "While Loop/ Index: "+index+", ArraySize: "+words.size()+", Word: "+words.get(index));
-            index++;
-        }
+//        int index = 0;
+//        ArrayList<TextView> wordViewList = new ArrayList<TextView>();
+//        while (index < words.size()) {
+//            wordViewList.add(new TextView(this));
+//            wordViewList.get(index).setText(words.get(index));
+//            rootView.addView(wordViewList.get(index));
+//            Log.v("NumbersActivity", "While Loop/ Index: "+index+", ArraySize: "+words.size()+", Word: "+words.get(index));
+//            index++;
+//        }
 
         /**
          * Create an arraylist of textViews using for loop,
@@ -124,6 +138,30 @@ public class NumbersActivity extends AppCompatActivity {
 //            rootView.addView(newTextView);
 //            Log.v("NumbersActivity", "For Loop/ Index: "+index+", ArraySize: "+words.size()+", Word: "+words.get(index));
 //        }
+
+        /**
+         * Create an ArrayAdapter to show a list to a ListView in XML
+         * @type simple_list_item_1
+         * @input words ArrayList
+         */
+//        ArrayAdapter<String> wordViewAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words);
+//        ListView listView = (ListView) findViewById(R.id.list);
+//        listView.setAdapter(wordViewAdapter);
+        /** Same but using grid, changed to xml are needed*/
+//        GridView gridView = (GridView) findViewById(R.id.grid);
+//        gridView.setAdapter(wordViewAdapter);
+
+        /**
+         * Create an ArrayAdapter to show a dual list using list_item
+         */
+//        ArrayAdapter<Word> wordViewAdapter = new ArrayAdapter<Word>(this, R.layout.list_item, words);
+//        ListView listView = (ListView) findViewById(R.id.list);
+//        listView.setAdapter(wordViewAdapter);
+
+        /** Use our own WordAdapter instead of ArrayAdapter */
+        WordAdapter adapter = new WordAdapter(this, words);
+        ListView listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(adapter);
 
 
     }
