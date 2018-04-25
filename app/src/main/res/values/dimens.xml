@@ -18,6 +18,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="miwok_list_word_size">21sp</dimen>
+    <dimen name="miwok_list_word_size">18sp</dimen>
     <dimen name="english_list_word_size">18sp</dimen>
+    <dimen name="icon_padding">8dp</dimen>
 </resources>

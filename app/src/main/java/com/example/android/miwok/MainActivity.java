@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        //Add Up navigation
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
